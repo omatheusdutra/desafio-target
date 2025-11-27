@@ -14,7 +14,7 @@ O foco da solução é:
 ## 🧱 Estrutura do projeto
 
 ```text
-desafio-target-sistemas/
+desafio-target/
 ├─ index.html                # Portal com resumo dos desafios
 ├─ pages/
 │  ├─ comissao.html          # Desafio 01 - Comissão de Vendas
@@ -39,8 +39,8 @@ desafio-target-sistemas/
 1. Faça o clone do repositório:
 
    ```bash
-   git clone https://github.com/SEU-USUARIO/desafio-target-sistemas.git
-   cd desafio-target-sistemas
+   git clone https://github.com/SEU-USUARIO/desafio-target.git
+   cd desafio-target
    ```
 
 2. Abra o arquivo `index.html` diretamente no navegador (Chrome, Edge, etc).
@@ -51,7 +51,6 @@ desafio-target-sistemas/
 2. Acesse **Settings > Pages**.
 3. Em **Source**, selecione a branch `main` e o diretório `/ (root)`.
 4. Salve e aguarde o link ser gerado.
-5. Use esse link como entrega do desafio.
 
 ---
 

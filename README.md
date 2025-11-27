@@ -11,6 +11,15 @@ O foco da solução é:
 
 ---
 
+## 🌐 Demonstração Online (GitHub Pages)
+
+Acesse a versão publicada do projeto através do link abaixo:
+
+🔗 **GitHub Pages:**  
+https://omatheusdutra.github.io/desafio-target/
+
+---
+
 ## 🧱 Estrutura do projeto
 
 ```text

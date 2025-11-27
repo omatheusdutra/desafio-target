@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Desafio 01 - Comissão de Vendas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <div class="app page-main">
+    <header class="page-header">
+      <div class="page-header-title">
+        <h2>Desafio 01 — Comissão de Vendas</h2>
+        <span>
+          Cálculo de comissão com base em faixas de valor para cada venda e
+          agregação por vendedor.
+        </span>
+      </div>
+      <a href="../index.html" class="back-link">← Voltar para o índice</a>
+    </header>
+
+    <section class="section-card">
+      <h3>Regras de comissão</h3>
+      <p>
+        Considerando a lista de vendas em JSON, o programa lê os dados e
+        calcula a comissão de cada vendedor de acordo com as regras:
+      </p>
+      <ul style="margin-top: 8px; padding-left: 18px; font-size: 0.86rem; color: var(--muted);">
+        <li>Vendas abaixo de R$ 100,00 → <strong>0%</strong> de comissão</li>
+        <li>Vendas abaixo de R$ 500,00 → <strong>1%</strong> de comissão</li>
+        <li>A partir de R$ 500,00 → <strong>5%</strong> de comissão</li>
+      </ul>
+
+      <button id="btnCalcularComissoes" class="btn" style="margin-top: 12px;">
+        ▶ Calcular comissões
+      </button>
+
+      <div id="resultadoComissoes" class="result-box">
+        Clique em <strong>Calcular comissões</strong> para ver a tabela com o
+        total de vendas e de comissão por vendedor.
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h3>Implementação em JavaScript</h3>
+      <p>
+        A lógica foi separada em duas funções principais:
+        <code>calcularComissao(valor)</code> e
+        <code>agruparComissoesPorVendedor(vendas)</code>, facilitando a
+        reutilização em um contexto de back-end ou API.
+      </p>
+      <pre class="result-box" style="white-space: pre-wrap; font-family: monospace; margin-top: 10px;">
+function calcularComissao(valor) {
+  if (valor &lt; 100) return 0;
+  if (valor &lt; 500) return valor * 0.01;
+  return valor * 0.05;
+}
+
+function agruparComissoesPorVendedor(vendas) {
+  const resultado = {};
+
+  vendas.forEach((venda) =&gt; {
+    const comissao = calcularComissao(venda.valor);
+
+    if (!resultado[venda.vendedor]) {
+      resultado[venda.vendedor] = {
+        totalVendas: 0,
+        totalComissao: 0,
+      };
+    }
+
+    resultado[venda.vendedor].totalVendas += venda.valor;
+    resultado[venda.vendedor].totalComissao += comissao;
+  });
+
+  return resultado;
+}
+      </pre>
+    </section>
+
+    <footer class="footer">
+      Desenvolvido por <strong>Matheus Dutra</strong>
+    </footer>
+  </div>
+
+  <script src="../assets/js/comissao.js"></script>
+</body>
+</html>

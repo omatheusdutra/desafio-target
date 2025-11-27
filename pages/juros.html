@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Desafio 03 - Juros por Atraso</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <div class="app page-main">
+    <header class="page-header">
+      <div class="page-header-title">
+        <h2>Desafio 03 — Cálculo de Juros por Atraso</h2>
+        <span>
+          Cálculo de multa diária de 2,5% ao dia sobre o valor devido, com base
+          na data de vencimento.
+        </span>
+      </div>
+      <a href="../index.html" class="back-link">← Voltar para o índice</a>
+    </header>
+
+    <section class="section-card">
+      <h3>Parâmetros</h3>
+      <p>
+        Informe um valor e a data de vencimento. O sistema calcula quantos dias
+        de atraso existem em relação à data atual, aplica a multa de
+        <strong>2,5% ao dia</strong> e retorna o valor dos juros e o total
+        atualizado.
+      </p>
+
+      <div class="grid-2" style="margin-top: 10px;">
+        <div>
+          <label for="valorOriginal">Valor original (R$)</label>
+          <input
+            type="number"
+            id="valorOriginal"
+            min="0"
+            step="0.01"
+            placeholder="Ex.: 1000"
+          />
+        </div>
+        <div>
+          <label for="dataVencimento">Data de vencimento</label>
+          <input type="date" id="dataVencimento" />
+        </div>
+      </div>
+
+      <button id="btnCalcularJuros" class="btn" style="margin-top: 10px;">
+        📅 Calcular juros
+      </button>
+
+      <div id="resultadoJuros" class="result-box">
+        Informe o valor e a data de vencimento e clique em
+        <strong>Calcular juros</strong>.
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h3>Implementação em JavaScript</h3>
+      <pre class="result-box" style="white-space: pre-wrap; font-family: monospace; margin-top: 10px;">
+function calcularJuros(valor, dataVencimento) {
+  const hoje = new Date();
+  const venc = new Date(dataVencimento);
+
+  const diffMs = hoje - venc;
+  if (diffMs &lt;= 0) {
+    return { diasAtraso: 0, juros: 0, total: valor };
+  }
+
+  const MILIS_POR_DIA = 1000 * 60 * 60 * 24;
+  const diasAtraso = Math.floor(diffMs / MILIS_POR_DIA);
+  const taxaDiaria = 0.025; // 2,5% ao dia
+
+  const juros = valor * taxaDiaria * diasAtraso;
+  const total = valor + juros;
+
+  return { diasAtraso, juros, total };
+}
+      </pre>
+    </section>
+
+    <footer class="footer">
+      Desenvolvido por <strong>Matheus Dutra</strong>
+    </footer>
+  </div>
+
+  <script src="../assets/js/juros.js"></script>
+</body>
+</html>

@@ -32,7 +32,7 @@ desafio-target/
 ├─ assets/
 │  ├─ css/
 │  │  └─ style.css           # Estilo compartilhado
-|  |- img/
+|  ├─ img/
 |  |  └─ favicon.svg         # Favicon do site
 │  └─ js/
 │     ├─ comissao.js         # Lógica do desafio 01
